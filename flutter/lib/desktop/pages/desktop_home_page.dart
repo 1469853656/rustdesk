@@ -12,6 +12,7 @@ import 'package:flutter_hbb/consts.dart';
 // import 'package:flutter_hbb/desktop/pages/connection_page.dart';
 import 'package:flutter_hbb/desktop/pages/desktop_setting_page.dart';
 import 'package:flutter_hbb/desktop/pages/desktop_tab_page.dart';
+import 'package:flutter_hbb/desktop/widgets/online_status_widget.dart';
 import 'package:flutter_hbb/desktop/widgets/update_progress.dart';
 import 'package:flutter_hbb/models/platform_model.dart';
 import 'package:flutter_hbb/models/server_model.dart';
@@ -105,7 +106,6 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     if (isIncomingOnly) {
       children.addAll([
         Divider(),
-        /*
         OnlineStatusWidget(
           onSvcStatusChanged: () {
             if (isInHomePage()) {
@@ -115,7 +115,6 @@ class _DesktopHomePageState extends State<DesktopHomePage>
             }
           },
         ).marginOnly(bottom: 6, right: 6)
-        */
       ]);
     }
     return ChangeNotifierProvider.value(

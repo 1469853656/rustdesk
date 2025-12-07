@@ -1,0 +1,8 @@
+2025-12-05T09:26:42.2230000Z Job is about to start running on the hosted runner: GitHub Actions 1000000065
+2025-12-05T09:26:42.1960000Z Requested labels: ubuntu-24.04
+2025-12-05T09:26:42.1960000Z Job defined at: 1469853656/rustdesk/.github/workflows/flutter-build.yml@refs/heads/master
+2025-12-05T09:26:42.1960000Z Reusable workflow chain:
+2025-12-05T09:26:42.1960000Z 1469853656/rustdesk/.github/workflows/flutter-tag.yml@refs/heads/master (6440de902d92459e2386d0bef1a31c7115a4bca3)
+2025-12-05T09:26:42.1960000Z -> 1469853656/rustdesk/.github/workflows/flutter-build.yml@refs/heads/master (6440de902d92459e2386d0bef1a31c7115a4bca3)
+2025-12-05T09:26:42.1960000Z Waiting for a runner to pick up this job...
+2025-12-05T09:26:42.2190000Z Job is waiting for a hosted runner to come online.

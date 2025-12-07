@@ -1,0 +1,339 @@
+//----------修改文档.txt--------------//
+
+置入中继服务器IP及Key：
+    定位文件：RustDesk\libs\hbb_common\src\config.rs
+    搜：rs-ny.rustdesk.com
+    改成你的服务器IP，下面的RS_PUB_KEY改成服务器的Key
+
+
+去掉官方的API接口
+    定位文件：RustDesk\src\common.rs
+    搜：https://admin.rustdesk.com
+    改成空
+    
+    
+删除地址簿、可访问的设备
+    定位文件：RustDesk\flutter\lib\models\peer_tab_model.dart
+    删：'Address book',
+    删：'Accessible devices',
+    删：IconFont.addressBook,
+    删：IconFont.deviceGroupFill,
+    删：!(bind.isDisableAb() || bind.isDisableAccount()),
+    删：!(bind.isDisableGroupPanel() || bind.isDisableAccount()),
+    将：static const int maxTabCount = 5;
+    改：static const int maxTabCount = 3;
+    
+    
+去掉底部“如果需要更快连接速度，你可以选择自建服务器”
+    定位文件：RustDesk\flutter\lib\desktop\pages\connection_page.dart
+    搜：translate('setup_server_tip'),
+    删：
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(', ', style: TextStyle(fontSize: em)),
+                    Flexible(
+                      child: InkWell(
+                        onTap: onUsePublicServerGuide,
+                        child: Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                translate('setup_server_tip'),
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    fontSize: em),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                
+                
+删掉设置里的账户
+    定位文件：RustDesk\flutter\lib\desktop\pages\desktop_setting_page.dart
+    搜：if (!bind.isDisableAccount()) SettingsTabKey.account,
+    删：if (!bind.isDisableAccount()) SettingsTabKey.account,
+    
+    
+删掉设置里的关于
+    定位文件：RustDesk\flutter\lib\desktop\pages\desktop_setting_page.dart
+    搜：SettingsTabKey.about,
+    删：SettingsTabKey.about,
+    
+    
+删除标题栏的设置按钮
+    定位文件：RustDesk\flutter\lib\desktop\pages\desktop_tab_page.dart
+    搜：Widget build(BuildContext context) {
+    删：
+                  tail: Offstage(
+                    offstage: bind.isIncomingOnly() || bind.isDisableSettings(),
+                    child: ActionIcon(
+                      message: 'Settings',
+                      icon: IconFont.menu,
+                      onTap: DesktopTabPage.onAddSetting,
+                      isClose: false,
+                    ),
+                  ),
+                  
+                  
+删除一次性密码中的设置按钮
+    定位文件：RustDesk\flutter\lib\desktop\pages\desktop_home_page.dart
+    搜：message: translate('Change Password'),
+    删：
+                          if (!bind.isDisableSettings())
+                            InkWell(
+                              child: Tooltip(
+                                message: translate('Change Password'),
+                                child: Obx(
+                                  () => Icon(
+                                    Icons.edit,
+                                    color: editHover.value
+                                        ? textColor
+                                        : Color(0xFFDDDDDD),
+                                    size: 22,
+                                  ).marginOnly(right: 8, top: 4),
+                                ),
+                              ),
+                              onTap: () => DesktopSettingPage.switch2page(
+                                  SettingsTabKey.safety),
+                              onHover: (value) => editHover.value = value,
+                            ),
+                            
+                            
+删除你的桌面下面ID旁边的设置
+    定位文件：RustDesk\flutter\lib\desktop\pages\desktop_home_page.dart
+    搜:Widget buildPopupMenu(BuildContext context) {
+    将：
+                Widget buildPopupMenu(BuildContext context) {
+                  final textColor = Theme.of(context).textTheme.titleLarge?.color;
+                  RxBool hover = false.obs;
+                  return InkWell(
+                    onTap: DesktopTabPage.onAddSetting,
+                    child: Tooltip(
+                      message: translate('Settings'),
+                      child: Obx(
+                        () => CircleAvatar(
+                          radius: 15,
+                          backgroundColor: hover.value
+                              ? Theme.of(context).scaffoldBackgroundColor
+                              : Theme.of(context).colorScheme.background,
+                          child: Icon(
+                            Icons.more_vert_outlined,
+                            size: 20,
+                            color: hover.value ? textColor : textColor?.withOpacity(0.5),
+                          ),
+                        ),
+                      ),
+                    ),
+                    onHover: (value) => hover.value = value,
+                  );
+                }
+    改为：
+    Widget buildPopupMenu(BuildContext context) {
+        return Container();
+      }
+                            
+                            
+删除主页上的整个含【最近访问过、收藏、已发现、地址簿、可访问的设备】
+    定位文件：RustDesk\flutter\lib\desktop\pages\connection_page.dart
+    搜：final isOutgoingOnly = bind.isOutgoingOnly();
+    删：
+        Divider().paddingOnly(right: 12),
+        Expanded(child: PeerTabPage()),
+        
+        
+删除主页上控制远程桌面
+    定位文件：RustDesk\flutter\lib\desktop\pages\connection_page.dart
+    搜：final isOutgoingOnly = bind.isOutgoingOnly();
+    删：
+              children: [
+                Row(
+                  children: [
+                    Flexible(child: _buildRemoteIDTextField(context)),
+                  ],
+                ).marginOnly(top: 22),
+                SizedBox(height: 12),
+              ],
+              
+              
+加上自定义Logo(必须先删除以上两个方法即：删除最近访问过、收藏、已发现、地址簿、可访问的设备、删除控制远程桌面)
+    定位文件：RustDesk\flutter\lib\desktop\pages\connection_page.dart
+    搜：final isOutgoingOnly = bind.isOutgoingOnly();
+    在”child: Column(“和”).paddingOnly(left: 12.0)),“之中添加以下代码：
+                children: [
+                Expanded(
+                  child: Center(
+                    child: Image.asset(
+                      'assets/rustdesk.png',
+                      width: 399, 
+                      height: 106, 
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ],
+    图片文件放到RustDesk\flutter\assets中并改名：rustdesk.png
+      
+      
+删掉设置里的网络-ID/中继服务器
+    定位文件：RustDesk\flutter\lib\desktop\pages\desktop_setting_page.dart
+    搜：title: 'ID/Relay Server',
+    删：
+                  if (!hideServer)
+                    listTile(
+                      icon: Icons.dns_outlined,
+                      title: 'ID/Relay Server',
+                      onTap: () => showServerSettings(gFFI.dialogManager),
+                    ),
+                  if (!hideServer && (!hideProxy || !hideWebSocket))
+                    Divider(height: 1, indent: 16, endIndent: 16),
+                    
+                    
+删除主页上的临时连接密码
+    定位文件：RustDesk\flutter\lib\desktop\pages\desktop_home_page.dart
+    搜：buildPasswordBoard2(BuildContext context, ServerModel model) {
+    将：buildPasswordBoard2(BuildContext context, ServerModel model)  
+    这个函数改为：
+    buildPasswordBoard2(BuildContext context, ServerModel model) {
+        return Container();
+      }
+      
+      
+将设置里的 常规-启用UDP打洞 默认打勾
+    定位文件：RustDesk\libs\hbb_common\src\config.rs
+    搜：Config::load_::<LocalConfig>("_local")
+    改：let mut config = Config::load_::<LocalConfig>("_local");
+    然后在下一行新增：
+    let mut store = false;
+    
+    if !config.options.contains_key("enable-udp-punch") {
+      config.options.insert("enable-udp-punch".to_string(), "Y".to_string());
+      store = true;
+    }
+    
+    if store {
+      onfig.store();
+    }
+    config
+    
+    
+将设置里的 常规-主题 改为默认主题为暗黑
+    定位：RustDesk\libs\hbb_common\src\config.rs
+    搜：let mut config = Config::load_::<LocalConfig>("_local");
+    在下俩行新增：
+            if !config.options.contains_key("theme") {
+                config.options.insert("theme".to_string(), "dark".to_string());
+                store = true;
+            }
+    注意：默认您已经改了上面的“启用UDP打洞”
+    如果没改，自行把 Config::load_::<LocalConfig>("_local") 改 let mut config = Config::load_::<LocalConfig>("_local");
+    并在上面的代码末尾加上config
+    具体参考“将设置里的 常规-启用UDP打洞 默认打勾”
+    
+    
+将设置里的 常规-启动时检查软件更新 默认去勾
+    定位：RustDesk\libs\hbb_common\src\config.rs
+    搜：let mut config = Config::load_::<LocalConfig>("_local");
+    在下俩行新增：
+    if !config.options.contains_key("enable-check-update") {
+    config.options.insert("enable-check-update".to_string(), "N".to_string());
+    store = true;
+    }
+    注意：默认您已经改了上面的“启用UDP打洞”
+    如果没改，自行把 Config::load_::<LocalConfig>("_local") 改 let mut config = Config::load_::<LocalConfig>("_local");
+    并在上面的代码末尾加上config
+    具体参考“将设置里的 常规-启用UDP打洞 默认打勾”
+    
+    
+将设置里的 常规-启用 IPv6 P2P 连接 默认打勾
+    定位文件：RustDesk\libs\hbb_common\src\config.rs
+    搜：let mut config = Config::load_::<LocalConfig>("_local");
+    在下俩行新增：
+            if !config.options.contains_key("enable-ipv6-punch") {
+                config.options.insert("enable-ipv6-punch".to_string(), "Y".to_string());
+                store = true;
+            }
+    注意：默认您已经改了上面的“启用UDP打洞”
+    如果没改，自行把 Config::load_::<LocalConfig>("_local") 改 let mut config = Config::load_::<LocalConfig>("_local");
+    并在上面的代码末尾加上config
+    具体参考“将设置里的 常规-启用UDP打洞 默认打勾”
+    
+    
+将设置里的 安全-拒绝局域网发现 默认打勾
+    定位文件：RustDesk\libs\hbb_common\src\config.rs
+    搜：let mut config = Config::load_::<Config2>("2");
+    在下两行新增：
+            if !config.options.contains_key("enable-lan-discovery") {
+                config.options.insert("enable-lan-discovery".to_string(), "N".to_string());
+                store = true;
+            }
+            
+            
+将设置里的 安全-允许远程修改配置 默认打勾
+    定位文件：RustDesk\libs\hbb_common\src\config.rs
+    搜：let mut config = Config::load_::<Config2>("2");
+    在下两行新增：
+            if !config.options.contains_key("allow-remote-config-modification") {
+                config.options.insert("allow-remote-config-modification".to_string(), "Y".to_string());
+                store = true;
+            }
+            
+            
+将设置里的 安全-使用PIN码解锁设置 默认打勾
+    定位文件：RustDesk\libs\hbb_common\src\config.rs
+    搜：config.unlock_pin = unlock_pin;
+    在下两行新增：
+    if config.unlock_pin.is_empty() {
+                config.unlock_pin = "！！！加密后的PIN码！！！".to_string();
+                store = true;
+            }
+    注：PIN码是经过加密的才能填进去，怎么加密？先在RustDesk软件里设置一个PIN码
+    然后打开配置文件C:\Users\当前Windows账户\AppData\Roaming\RustDesk\config\RustDesk2.toml
+    把其中的unlock_pin = '1V8AS4/+EWF84A85WD4AW=='(假设) 把加密后的PIN码“1V8AS4/+EWF84A85WD4AW==”复制出来填进去
+    
+    
+将设置里的【安全-密码】设置默认的固定密码
+    1、定位文件：RustDesk\libs\hbb_common\src\config.rs
+        搜：config.unlock_pin = unlock_pin;
+        在下两行新增：
+                if !config.options.contains_key("trusted_devices") {
+                    config.options.insert("trusted_devices".to_string(), "！！！加密后的密码！！！".to_string());
+                    config.store();
+                }
+        注：密码是经过加密的才能填进去，怎么加密？先在RustDesk软件里的设置一个密码
+        然后打开配置文件C:\Users\当前Windows账户\AppData\Roaming\RustDesk\config\RustDesk2.toml
+        把其中的trusted_devices = '1V8AS4/+EWF84A85WD4AW=='(假设) 把加密后的密码“1V8AS4/+EWF84A85WD4AW==”复制出来填进去
+        
+    2、搜：log::error!("Failed to generate new id");
+        在3个“}”后新增代码
+        if config.password.is_empty() {
+                    config.password = "！！！加密后的密码！！！".to_string();
+                    store = true;
+                }
+        注：密码是经过加密的才能填进去，怎么加密？先在RustDesk软件里的设置一个密码
+        然后打开配置文件C:\Users\当前Windows账户\AppData\Roaming\RustDesk\config\RustDesk.toml
+        把其中的password = '1V8AS4/+EWF84A85WD4AW=='(假设) 把加密后的密码“1V8AS4/+EWF84A85WD4AW==”复制出来填进去
+        
+        
+将设置里的【安全-密码】切换成【使用固定密码】方式
+    定位文件：RustDesk\libs\hbb_common\src\config.rs
+    搜：let mut config = Config::load_::<Config2>("2");
+    在下两行新增：
+            if !config.options.contains_key("verification-method") {
+                config.options.insert("verification-method".to_string(), "use-permanent-password".to_string());
+                store = true;
+            }
+            
+            
+将设置里的【安全-密码】改为成【只允许密码访问】方式
+    定位文件：RustDesk\libs\hbb_common\src\config.rs
+    搜：let mut config = Config::load_::<Config2>("2");
+    在下两行新增：
+            if !config.options.contains_key("approve-mode") {
+                config.options.insert("approve-mode".to_string(), "password".to_string());
+                store = true;
+            }

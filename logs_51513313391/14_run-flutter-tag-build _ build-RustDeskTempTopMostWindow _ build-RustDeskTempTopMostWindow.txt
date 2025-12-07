@@ -1,0 +1,158 @@
+﻿2025-12-05T09:20:42.5650124Z Current runner version: '2.329.0'
+2025-12-05T09:20:42.5672681Z ##[group]Runner Image Provisioner
+2025-12-05T09:20:42.5673448Z Hosted Compute Agent
+2025-12-05T09:20:42.5673927Z Version: 20251124.448
+2025-12-05T09:20:42.5674463Z Commit: fda5086b43ec66ade217e5fcd18146c879571177
+2025-12-05T09:20:42.5675118Z Build Date: 2025-11-24T21:16:26Z
+2025-12-05T09:20:42.5675643Z ##[endgroup]
+2025-12-05T09:20:42.5676151Z ##[group]Operating System
+2025-12-05T09:20:42.5676651Z Microsoft Windows Server 2022
+2025-12-05T09:20:42.5677164Z 10.0.20348
+2025-12-05T09:20:42.5677585Z Datacenter
+2025-12-05T09:20:42.5678019Z ##[endgroup]
+2025-12-05T09:20:42.5678442Z ##[group]Runner Image
+2025-12-05T09:20:42.5678882Z Image: windows-2022
+2025-12-05T09:20:42.5679332Z Version: 20251125.125.1
+2025-12-05T09:20:42.5680243Z Included Software: https://github.com/actions/runner-images/blob/win22/20251125.125/images/windows/Windows2022-Readme.md
+2025-12-05T09:20:42.5681892Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20251125.125
+2025-12-05T09:20:42.5682774Z ##[endgroup]
+2025-12-05T09:20:42.5685201Z ##[group]GITHUB_TOKEN Permissions
+2025-12-05T09:20:42.5686983Z Actions: write
+2025-12-05T09:20:42.5687488Z ArtifactMetadata: write
+2025-12-05T09:20:42.5687966Z Attestations: write
+2025-12-05T09:20:42.5688435Z Checks: write
+2025-12-05T09:20:42.5688819Z Contents: write
+2025-12-05T09:20:42.5689273Z Deployments: write
+2025-12-05T09:20:42.5689690Z Discussions: write
+2025-12-05T09:20:42.5690147Z Issues: write
+2025-12-05T09:20:42.5690557Z Metadata: read
+2025-12-05T09:20:42.5691028Z Models: read
+2025-12-05T09:20:42.5691441Z Packages: write
+2025-12-05T09:20:42.5691870Z Pages: write
+2025-12-05T09:20:42.5692307Z PullRequests: write
+2025-12-05T09:20:42.5692750Z RepositoryProjects: write
+2025-12-05T09:20:42.5693314Z SecurityEvents: write
+2025-12-05T09:20:42.5693750Z Statuses: write
+2025-12-05T09:20:42.5694210Z ##[endgroup]
+2025-12-05T09:20:42.5696150Z Secret source: Actions
+2025-12-05T09:20:42.5696764Z Prepare workflow directory
+2025-12-05T09:20:42.6267474Z Prepare all required actions
+2025-12-05T09:20:42.6303969Z Getting action download info
+2025-12-05T09:20:43.1033277Z Download action repository 'microsoft/setup-msbuild@v2' (SHA:6fb02220983dee41ce7ae257b6f4d8f9bf5ed4ce)
+2025-12-05T09:20:43.6269108Z Download action repository 'actions/upload-artifact@master' (SHA:330a01c490aca151604b8cf639adc76d48f6c5d4)
+2025-12-05T09:20:43.8932944Z Uses: 1469853656/rustdesk/.github/workflows/third-party-RustDeskTempTopMostWindow.yml@refs/heads/master (6440de902d92459e2386d0bef1a31c7115a4bca3)
+2025-12-05T09:20:43.8938204Z ##[group] Inputs
+2025-12-05T09:20:43.8939125Z   upload-artifact: true
+2025-12-05T09:20:43.8939682Z   target: windows-2022
+2025-12-05T09:20:43.8940490Z   configuration: Release
+2025-12-05T09:20:43.8941220Z   platform: x64
+2025-12-05T09:20:43.8945352Z   target_version: Windows10
+2025-12-05T09:20:43.8946231Z ##[endgroup]
+2025-12-05T09:20:43.8953183Z Complete job name: run-flutter-tag-build / build-RustDeskTempTopMostWindow / build-RustDeskTempTopMostWindow
+2025-12-05T09:20:44.0308187Z ##[group]Run microsoft/setup-msbuild@v2
+2025-12-05T09:20:44.0309477Z with:
+2025-12-05T09:20:44.0309969Z   msbuild-architecture: x86
+2025-12-05T09:20:44.0310835Z env:
+2025-12-05T09:20:44.0311459Z   project_path: WindowInjection/WindowInjection.vcxproj
+2025-12-05T09:20:44.0312465Z   build_output_dir: RustDeskTempTopMostWindow/WindowInjection/x64/Release
+2025-12-05T09:20:44.0313345Z ##[endgroup]
+2025-12-05T09:20:44.1881933Z [command]C:\ProgramData\Chocolatey\bin\vswhere.exe -products * -requires Microsoft.Component.MSBuild -property installationPath -latest
+2025-12-05T09:20:44.5752315Z C:\Program Files\Microsoft Visual Studio\2022\Enterprise
+2025-12-05T09:20:44.6043712Z ##[group]Run git clone https://github.com/rustdesk-org/RustDeskTempTopMostWindow RustDeskTempTopMostWindow
+2025-12-05T09:20:44.6045165Z [36;1mgit clone https://github.com/rustdesk-org/RustDeskTempTopMostWindow RustDeskTempTopMostWindow[0m
+2025-12-05T09:20:44.6563384Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2025-12-05T09:20:44.6564199Z env:
+2025-12-05T09:20:44.6564751Z   project_path: WindowInjection/WindowInjection.vcxproj
+2025-12-05T09:20:44.6565711Z   build_output_dir: RustDeskTempTopMostWindow/WindowInjection/x64/Release
+2025-12-05T09:20:44.6566556Z ##[endgroup]
+2025-12-05T09:20:49.0467537Z Cloning into 'RustDeskTempTopMostWindow'...
+2025-12-05T09:20:50.7860376Z ##[group]Run cd RustDeskTempTopMostWindow && git checkout 53b548a5398624f7149a382000397993542ad796
+2025-12-05T09:20:50.7861130Z [36;1mcd RustDeskTempTopMostWindow && git checkout 53b548a5398624f7149a382000397993542ad796[0m
+2025-12-05T09:20:50.7861925Z [36;1mmsbuild WindowInjection/WindowInjection.vcxproj -p:Configuration=Release -p:Platform=x64 /p:TargetVersion=Windows10[0m
+2025-12-05T09:20:50.7897582Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2025-12-05T09:20:50.7897959Z env:
+2025-12-05T09:20:50.7898225Z   project_path: WindowInjection/WindowInjection.vcxproj
+2025-12-05T09:20:50.7898689Z   build_output_dir: RustDeskTempTopMostWindow/WindowInjection/x64/Release
+2025-12-05T09:20:50.7899057Z ##[endgroup]
+2025-12-05T09:20:51.1443418Z Note: switching to '53b548a5398624f7149a382000397993542ad796'.
+2025-12-05T09:20:51.1443886Z 
+2025-12-05T09:20:51.1444094Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-12-05T09:20:51.1444613Z changes and commit them, and you can discard any commits you make in this
+2025-12-05T09:20:51.1445265Z state without impacting any branches by switching back to a branch.
+2025-12-05T09:20:51.1445665Z 
+2025-12-05T09:20:51.1446146Z If you want to create a new branch to retain commits you create, you may
+2025-12-05T09:20:51.1446716Z do so (now or later) by using -c with the switch command. Example:
+2025-12-05T09:20:51.1446962Z 
+2025-12-05T09:20:51.1447069Z   git switch -c <new-branch-name>
+2025-12-05T09:20:51.1447226Z 
+2025-12-05T09:20:51.1447315Z Or undo this operation with:
+2025-12-05T09:20:51.1447468Z 
+2025-12-05T09:20:51.1447538Z   git switch -
+2025-12-05T09:20:51.1447646Z 
+2025-12-05T09:20:51.1447851Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-12-05T09:20:51.1448113Z 
+2025-12-05T09:20:51.1448273Z HEAD is now at 53b548a Check if WDA_EXCLUDEFROMCAPTURE is supported
+2025-12-05T09:20:53.9880110Z MSBuild version 17.14.23+b0019275e for .NET Framework
+2025-12-05T09:20:54.9400685Z Build started 12/5/2025 9:20:54 AM.
+2025-12-05T09:20:54.9548216Z 
+2025-12-05T09:20:57.4687738Z Project "D:\a\rustdesk\rustdesk\RustDeskTempTopMostWindow\WindowInjection\WindowInjection.vcxproj" on node 1 (default targets).
+2025-12-05T09:20:57.4689541Z PrepareForBuild:
+2025-12-05T09:20:57.4689948Z   Creating directory "x64\Release\".
+2025-12-05T09:20:57.5270713Z   Creating directory "x64\Release\WindowInjection.tlog\".
+2025-12-05T09:20:57.5398611Z InitializeBuildStatus:
+2025-12-05T09:20:57.5399602Z   Creating "x64\Release\WindowInjection.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+2025-12-05T09:20:57.5401045Z   Touching "x64\Release\WindowInjection.tlog\unsuccessfulbuild".
+2025-12-05T09:20:57.7231147Z ClCompile:
+2025-12-05T09:20:57.7232960Z   C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\CL.exe /c /Zi /nologo /W3 /WX- /diagnostics:column /sdl /O2 /Oi /GL /D NDEBUG /D WINDOWINJECTION_EXPORTS /D _WINDOWS /D _USRDLL /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yc"pch.h" /Fp"x64\Release\WindowInjection.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc142.pdb" /external:W3 /Gd /TP /FC /errorReport:queue pch.cpp
+2025-12-05T09:20:58.1238975Z   pch.cpp
+2025-12-05T09:21:00.8727826Z   C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\CL.exe /c /Zi /nologo /W3 /WX- /diagnostics:column /sdl /O2 /Oi /GL /D NDEBUG /D WINDOWINJECTION_EXPORTS /D _WINDOWS /D _USRDLL /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Release\WindowInjection.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc142.pdb" /external:W3 /Gd /TP /FC /errorReport:queue bitmap_loader.cpp dllmain.cpp img.cpp
+2025-12-05T09:21:00.9107690Z   bitmap_loader.cpp
+2025-12-05T09:21:03.6712669Z   dllmain.cpp
+2025-12-05T09:21:04.1653442Z   img.cpp
+2025-12-05T09:21:04.2637502Z Link:
+2025-12-05T09:21:04.2642318Z   C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"D:\a\rustdesk\rustdesk\RustDeskTempTopMostWindow\WindowInjection\x64\Release\WindowInjection.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:NO /manifest:embed /DEBUG /PDB:"D:\a\rustdesk\rustdesk\RustDeskTempTopMostWindow\WindowInjection\x64\Release\WindowInjection.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG:incremental /LTCGOUT:"x64\Release\WindowInjection.iobj" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\a\rustdesk\rustdesk\RustDeskTempTopMostWindow\WindowInjection\x64\Release\WindowInjection.lib" /MACHINE:X64 /DLL x64\Release\bitmap_loader.obj
+2025-12-05T09:21:04.2647091Z   x64\Release\dllmain.obj
+2025-12-05T09:21:04.2647394Z   x64\Release\img.obj
+2025-12-05T09:21:04.2647682Z   x64\Release\pch.obj
+2025-12-05T09:21:04.9062883Z   Generating code
+2025-12-05T09:21:04.9492645Z   Previous IPDB not found, fall back to full compilation.
+2025-12-05T09:21:05.1941642Z   All 224 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+2025-12-05T09:21:05.1965658Z   Finished generating code
+2025-12-05T09:21:05.7618653Z   WindowInjection.vcxproj -> D:\a\rustdesk\rustdesk\RustDeskTempTopMostWindow\WindowInjection\x64\Release\WindowInjection.dll
+2025-12-05T09:21:05.8141396Z FinalizeBuildStatus:
+2025-12-05T09:21:05.8142023Z   Deleting file "x64\Release\WindowInjection.tlog\unsuccessfulbuild".
+2025-12-05T09:21:05.8145275Z   Touching "x64\Release\WindowInjection.tlog\WindowInjection.lastbuildstate".
+2025-12-05T09:21:05.8150718Z Done Building Project "D:\a\rustdesk\rustdesk\RustDeskTempTopMostWindow\WindowInjection\WindowInjection.vcxproj" (default targets).
+2025-12-05T09:21:05.8444089Z 
+2025-12-05T09:21:05.8444817Z Build succeeded.
+2025-12-05T09:21:05.8445171Z     0 Warning(s)
+2025-12-05T09:21:05.8445374Z     0 Error(s)
+2025-12-05T09:21:05.8509115Z 
+2025-12-05T09:21:05.8509426Z Time Elapsed 00:00:10.94
+2025-12-05T09:21:05.9097941Z ##[group]Run actions/upload-artifact@master
+2025-12-05T09:21:05.9098243Z with:
+2025-12-05T09:21:05.9098413Z   name: topmostwindow-artifacts
+2025-12-05T09:21:05.9098791Z   path: ./RustDeskTempTopMostWindow/WindowInjection/x64/Release/WindowInjection.dll
+
+2025-12-05T09:21:05.9099179Z   if-no-files-found: warn
+2025-12-05T09:21:05.9099368Z   compression-level: 6
+2025-12-05T09:21:05.9099538Z   overwrite: false
+2025-12-05T09:21:05.9099744Z   include-hidden-files: false
+2025-12-05T09:21:05.9099930Z env:
+2025-12-05T09:21:05.9100134Z   project_path: WindowInjection/WindowInjection.vcxproj
+2025-12-05T09:21:05.9100506Z   build_output_dir: RustDeskTempTopMostWindow/WindowInjection/x64/Release
+2025-12-05T09:21:05.9100836Z ##[endgroup]
+2025-12-05T09:21:06.2142989Z With the provided path, there will be 1 file uploaded
+2025-12-05T09:21:06.2151830Z Artifact name is valid!
+2025-12-05T09:21:06.2156118Z Root directory input is valid!
+2025-12-05T09:21:06.5527331Z Beginning upload of artifact content to blob storage
+2025-12-05T09:21:06.8988835Z Uploaded bytes 28711
+2025-12-05T09:21:06.9808518Z Finished uploading artifact content to blob storage!
+2025-12-05T09:21:06.9813528Z SHA256 digest of uploaded artifact zip is bcf769dd583a4daa0a92ecb806f8c49b4d4e3a4f97d6ec9dbe6a684c6c3143ff
+2025-12-05T09:21:06.9816844Z Finalizing artifact upload
+2025-12-05T09:21:07.1310499Z Artifact topmostwindow-artifacts.zip successfully finalized. Artifact ID 4774886683
+2025-12-05T09:21:07.1312569Z Artifact topmostwindow-artifacts has been successfully uploaded! Final size is 28711 bytes. Artifact ID is 4774886683
+2025-12-05T09:21:07.1322442Z Artifact download URL: https://github.com/1469853656/rustdesk/actions/runs/19958406663/artifacts/4774886683
+2025-12-05T09:21:07.1465804Z Cleaning up orphan processes
+2025-12-05T09:21:07.1689250Z Terminate orphan process: pid (6008) (vctip)
+2025-12-05T09:21:07.1796501Z Terminate orphan process: pid (6004) (mspdbsrv)

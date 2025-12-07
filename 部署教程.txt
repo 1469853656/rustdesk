@@ -1,0 +1,67 @@
+//----------部署教程.txt--------------//
+
+服务端部署：
+    1、服务端下载地址：https://github.com/rustdesk/rustdesk-server
+    2、(可选)NSSM工具下载地址：https://nssm.cc/release/nssm-2.24.zip
+    
+    使用CMD执行以下命令：
+        CD "服务端所在目录"
+        nssm install "RustDesk hbbs service" "服务端所在目录\hbbs.exe" 
+        nssm install "RustDesk hbbr Service" "服务端所在目录\hbbr.exe" 
+
+    
+客户端编译环境部署：
+    1、使用VS Code 编辑源代码文件或使用其他文本编辑软件都行
+        VS CODE下载地址：https://code.visualstudio.com/
+    
+    2、Git管理工具下载地址：https://git-scm.com/downloads/win
+        一路下一步安装
+    
+    3、Microsoft C++ 生成工具下载地址：https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/
+        打勾：
+            使用C++的桌面开发
+            Windows10 SDK
+            对 v143 生成工具(最新)的C++/CLI支持
+            适用于 v143 生成工具的C++模块(x64/x86)
+            适用于 Windows 的 C++ Clang 工具
+        
+    4、Rust语言下载：https://www.rust-lang.org/tools/install
+        选1安装
+        
+    5、安装vcpkg包管理工具
+        使用git命令执行：
+            cd c:\
+            git clone https://github.com/microsoft/vcpkg
+            cd vcpkg
+            bootstrap-vcpkg.bat
+            vcpkg install libvpx:x64-windows-static
+            vcpkg install aom:x64-windows-static
+            vcpkg install opus:x64-windows-static
+            vcpkg install libyuv:x64-windows-static
+            setx VCPKG_ROOT C:\vcpkg
+            
+    6、安装FlutterUI 框架
+        使用git命令执行：
+            cd c:\
+            git clone https://github.com/flutter/flutter.git -b 3.27.2
+            setx PATH "%PATH%;C:\flutter\bin"
+            cargo install flutter_rust_bridge_codegen --version 1.80.1 --features uuid --locked
+
+    7、安装LLVM编译工具：https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.7/LLVM-20.1.7-win64.exe
+        选择第二个
+        
+    8、安装Python 3.13.5 语言:https://www.python.org/downloads/
+        勾选 Add python.exe to PATH
+        
+    9、下载RustDesk源码(两个都要下)：
+        https://github.com/rustdesk/rustdesk
+        https://github.com/rustdesk/hbb_common
+        把hbb_common解压到*:\RustDesk\libs\里
+        
+    10、在RustDesk目录下以CMD执行如下命令补齐库
+      cd "RustDesk目录"
+      flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart --c-output ./flutter/macos/Runner/bridge_generated.h
+      
+    11、在RustDesk目录下以CMD执行编译命令
+      cd "RustDesk目录"
+      python build.py --portable --flutter --skip-portable-pack
